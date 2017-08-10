@@ -19,6 +19,8 @@ import {MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModul
     ContentComponent
   ],
   imports: [
+    HttpModule,
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MdButtonModule, 

@@ -1,24 +1,50 @@
-<div>
+<md-toolbar color="primary">
+  <span>Sunnyside</span>
+  <span class="example-spacer"></span>
+  <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon>Menu</button>
+</md-toolbar>
+
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item>Settings</button>
+  <button md-menu-item>Help</button>
+</md-menu>
+
+<md-card *ngFor="let data of (myData? myData.slice(0,10):[]); let i= index">
+  <img md-card-img src="{{data.url}}" alt=""/>
+    <md-card-header>
+      <md-card-title>{{data.title}}</md-card-title>
+    </md-card-header>   
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+</md-card>
+
+
+
+
+
+<!-- <div>
   <app-top-nav></app-top-nav>
 </div>
 <div>
   <ul>
     <li *ngFor="let arr of person">{{arr.name}}</li>
     <!-- <span *ngIf="!person; else personNotExist">Records found.</span> -->
-    <div *ngIf="!person; then personExists else personNotExists"></div>
+    <!-- <div *ngIf="!person; then personExists else personNotExists"></div> -->
 
-    <ng-template #personNotExists> No person exist. </ng-template>
-    <ng-template #personExists> Records found. </ng-template>
+    <!-- <ng-template #personNotExists> No person exist. </ng-template>
+    <ng-template #personExists> Records found. </ng-template> -->
 
     <!--binding  -->
-    <span>{{person}}</span>
-    <button (click)="submit($event,person)">Submit</button>
+    <!-- <span>{{person}}</span>
+    <button (click)="submit($event,person)">Submit</button> -->
 
     <!--from Service  -->
-    {{ someString}}
+    <!-- {{ someString}}
   </ul>
   <app-content></app-content>
 </div>
-<div>
-  <app-sidebar></app-sidebar>
-</div>
+<div> -->
+  <!-- <app-sidebar></app-sidebar> -->
+<!-- </div>  -->

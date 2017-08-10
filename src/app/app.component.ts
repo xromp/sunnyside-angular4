@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService} from './data.service';
+import { Http } from  '@angular/http';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,6 @@ import { DataService} from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-
   title = 'rom';
   person = [
     {name:'rom',age:22,gender:'male'},
@@ -23,8 +23,10 @@ export class AppComponent {
   }
 
     // service
-  constructor(private dataService:DataService){
-
+  constructor(private dataService:DataService, private http:Http){
+    this.http.get('https://jsonplaceholder.typicode.com/photos')
+      .map(response => response.json())
+      .subscribe(res => this.myData = res);
   }
 
   someString:string = '';
@@ -33,4 +35,10 @@ export class AppComponent {
     console.log(this.dataService.cars);
     this.someString = this.dataService.myData();
   }
+  
+  myData: Array<any>;
+  // constructor(private http:HTTp)
+    
+  // }
 }
+
